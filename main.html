@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Pages Forum</title>
+</head>
+<body>
+    <h1>Welcome to the GitHub Pages Forum</h1>
+    
+    <div>
+        <h2>Post a message:</h2>
+        <textarea id="message" rows="4" cols="50"></textarea>
+        <button onclick="postMessage()">Post</button>
+    </div>
+
+    <div>
+        <h2>Messages:</h2>
+        <ul id="messageList"></ul>
+    </div>
+
+    <script>
+        // Dummy array to store messages
+        let messages = [];
+
+        // Function to post a message
+        function postMessage() {
+            const messageText = document.getElementById("message").value;
+            if (messageText.trim() !== "") {
+                messages.push(messageText);
+                updateMessages();
+                document.getElementById("message").value = "";
+            }
+        }
+
+        // Function to update the message list
+        function updateMessages() {
+            const messageList = document.getElementById("messageList");
+            messageList.innerHTML = "";
+            messages.forEach((message, index) => {
+                const li = document.createElement("li");
+                li.textContent = message;
+                messageList.appendChild(li);
+            });
+        }
+
+        // Initial message update
+        updateMessages();
+    </script>
+</body>
+</html>
